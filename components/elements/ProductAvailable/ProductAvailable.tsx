@@ -1,10 +1,10 @@
-import { useLang } from "@/hooks/useLang";
-import styles from "@/styles/product-list-item/index.module.scss";
-import { IProductAvailableProps } from "@/types/elements";
+import { useLang } from '@/hooks/useLang'
+import styles from '@/styles/product-list-item/index.module.scss'
+import { IProductAvailableProps } from '@/types/elements'
 
 const ProductAvailable = ({ vendorCode, inStock }: IProductAvailableProps) => {
-  const isInStock = +inStock > 0;
-  const { lang, translations } = useLang();
+  const isInStock = +inStock > 0
+  const { lang, translations } = useLang()
 
   return (
     <div className={styles.product}>
@@ -22,7 +22,7 @@ const ProductAvailable = ({ vendorCode, inStock }: IProductAvailableProps) => {
         .: {vendorCode}
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default ProductAvailable;
+export default ProductAvailable

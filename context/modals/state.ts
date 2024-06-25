@@ -15,7 +15,7 @@ import {
   openShareModal,
   showQuickViewModal,
   showSizeTable,
-} from '.'
+} from './index'
 
 export const $menuIsOpen = modals
   .createStore(false)

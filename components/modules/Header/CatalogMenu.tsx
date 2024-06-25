@@ -1,44 +1,44 @@
-"use client";
-import { closeCatalogMenu } from "@/context/modals";
-import { $catalogMenuIsOpen } from "@/context/modals/state";
-import { useLang } from "@/hooks/useLang";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { useMenuAnimation } from "@/hooks/useMenuAnimation";
-import { removeOverflowHiddenFromBody } from "@/lib/utils/common";
-import { useUnit } from "effector-react";
-import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
-import { useState } from "react";
-import Accordion from "../Accordion/Accordion";
-import CatalogMenuButton from "./CatalogMenuButton";
-import CatalogMenuList from "./CatalogMenuList";
-import Header from "./Header";
+'use client'
+import { closeCatalogMenu } from '@/context/modals'
+import { $catalogMenuIsOpen } from '@/context/modals/state'
+import { useLang } from '@/hooks/useLang'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { useMenuAnimation } from '@/hooks/useMenuAnimation'
+import { removeOverflowHiddenFromBody } from '@/lib/utils/common'
+import { useUnit } from 'effector-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
+import { useState } from 'react'
+import Accordion from '../Accordion/Accordion'
+import CatalogMenuButton from './CatalogMenuButton'
+import CatalogMenuList from './CatalogMenuList'
+import Header from './Header'
 
 const CatalogMenu = () => {
-  const catalogMenuIsOpen = useUnit($catalogMenuIsOpen);
-  const [activeListId, setActiveListId] = useState(0);
-  const { lang, translations } = useLang();
+  const catalogMenuIsOpen = useUnit($catalogMenuIsOpen)
+  const [activeListId, setActiveListId] = useState(0)
+  const { lang, translations } = useLang()
   const { itemVariants, sideVariants, popupZIndex } = useMenuAnimation(
     2,
     catalogMenuIsOpen
-  );
-  const isMedia450 = useMediaQuery(450);
+  )
+  const isMedia450 = useMediaQuery(450)
 
   const handleCloseMenu = () => {
-    removeOverflowHiddenFromBody();
-    closeCatalogMenu();
-    setActiveListId(0);
-  };
+    removeOverflowHiddenFromBody()
+    closeCatalogMenu()
+    setActiveListId(0)
+  }
 
-  const isActiveList = (id: number) => activeListId === id;
+  const isActiveList = (id: number) => activeListId === id
 
   const items = [
     {
       name: translations[lang].main_menu.cloth,
       id: 1,
       items: [
-        translations[lang].comparison["t-shirts"],
-        translations[lang].comparison["long-sleeves"],
+        translations[lang].comparison['t-shirts'],
+        translations[lang].comparison['long-sleeves'],
         translations[lang].comparison.hoodie,
         translations[lang].comparison.outerwear,
       ],
@@ -58,8 +58,8 @@ const CatalogMenu = () => {
       name: translations[lang].main_menu.souvenirs,
       id: 3,
       items: [
-        translations[lang].comparison["business-souvenirs"],
-        translations[lang].comparison["promotional-souvenirs"],
+        translations[lang].comparison['business-souvenirs'],
+        translations[lang].comparison['promotional-souvenirs'],
       ],
       handler: () => setActiveListId(3),
     },
@@ -72,61 +72,61 @@ const CatalogMenu = () => {
       ],
       handler: () => setActiveListId(4),
     },
-  ];
+  ]
   return (
-    <div className="catalog-menu" style={{ zIndex: popupZIndex }}>
+    <div className='catalog-menu' style={{ zIndex: popupZIndex }}>
       <AnimatePresence>
         {catalogMenuIsOpen && (
           <motion.aside
             initial={{ width: 0 }}
             animate={{
-              width: "100%",
+              width: '100%',
             }}
             exit={{
               width: 0,
               transition: { delay: 0.7, duration: 0.3 },
             }}
-            className="catalog-menu__aside"
+            className='catalog-menu__aside'
           >
-            <div className="catalog-menu__header">
+            <div className='catalog-menu__header'>
               <Header />
             </div>
             <motion.div
-              className="catalog-menu__inner"
-              initial="closed"
-              animate="open"
-              exit="closed"
+              className='catalog-menu__inner'
+              initial='closed'
+              animate='open'
+              exit='closed'
               variants={sideVariants}
             >
               <motion.button
-                className="btn-reset catalog-menu__close"
+                className='btn-reset catalog-menu__close'
                 variants={itemVariants}
                 onClick={handleCloseMenu}
               />
               <motion.h2
                 variants={itemVariants}
-                className="catalog-menu__title"
+                className='catalog-menu__title'
               >
                 {translations[lang].main_menu.catalog}
               </motion.h2>
-              <ul className="list-reset catalog-menu__list">
+              <ul className='list-reset catalog-menu__list'>
                 {items.map(({ id, name, items, handler }) => {
                   const buttonProps = (isActive: boolean) => ({
                     handler: handler as VoidFunction,
                     name,
                     isActive,
-                  });
+                  })
 
                   const isCurrentList = (
                     showList: boolean,
                     currentId: number
-                  ) => showList && id === currentId;
+                  ) => showList && id === currentId
 
                   return (
                     <motion.li
                       key={id}
                       variants={itemVariants}
-                      className="catalog-menu__list__item"
+                      className='catalog-menu__list__item'
                     >
                       {!isMedia450 && (
                         <>
@@ -171,17 +171,17 @@ const CatalogMenu = () => {
                       {isMedia450 && (
                         <Accordion
                           title={name}
-                          titleClass="btn-reset nav-menu__accordion__item__title"
+                          titleClass='btn-reset nav-menu__accordion__item__title'
                         >
-                          <ul className="list-reset catalog__accordion__list">
+                          <ul className='list-reset catalog__accordion__list'>
                             {items.map((title, i) => (
                               <li
                                 key={i}
-                                className="catalog__accordion__list__item"
+                                className='catalog__accordion__list__item'
                               >
                                 <Link
-                                  href="/catalog"
-                                  className="nav-menu__accordion__item__list__item__link"
+                                  href='/catalog'
+                                  className='nav-menu__accordion__item__list__item__link'
                                 >
                                   {title}
                                 </Link>
@@ -191,7 +191,7 @@ const CatalogMenu = () => {
                         </Accordion>
                       )}
                     </motion.li>
-                  );
+                  )
                 })}
               </ul>
             </motion.div>
@@ -199,7 +199,7 @@ const CatalogMenu = () => {
         )}
       </AnimatePresence>
     </div>
-  );
-};
+  )
+}
 
-export default CatalogMenu;
+export default CatalogMenu

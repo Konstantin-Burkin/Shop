@@ -1,25 +1,24 @@
-"use client";
-import api from "@/api/apiinstance";
-import { handleShowSizeTable } from "@/lib/utils/common";
-import { IProduct } from "@/types/common";
+'use client'
+import api from '@/api/apiinstance'
+import { handleShowSizeTable } from '@/lib/utils/common'
+import { IProduct } from '@/types/common'
 import {
   ILoadOneProductFx,
   ILoadProductsByFilterFx,
   ILoadWatchedProductsFx,
-} from "@/types/goods";
-import { createDomain, createEffect } from "effector";
-import { createGate } from "effector-react";
-import toast from "react-hot-toast";
+} from '@/types/goods'
+import { createDomain, createEffect } from 'effector'
+import { createGate } from 'effector-react'
+import toast from 'react-hot-toast'
 
-export const goods = createDomain();
+export const goods = createDomain()
 
-export const MainPageGate = createGate();
+export const MainPageGate = createGate()
 
-export const setCurrentProduct = goods.createEvent<IProduct>();
-export const loadOneProduct = goods.createEvent<ILoadOneProductFx>();
-export const loadProductsByFilter =
-  goods.createEvent<ILoadProductsByFilterFx>();
-export const loadWatchedProducts = goods.createEvent<ILoadWatchedProductsFx>();
+export const setCurrentProduct = goods.createEvent<IProduct>()
+export const loadOneProduct = goods.createEvent<ILoadOneProductFx>()
+export const loadProductsByFilter = goods.createEvent<ILoadProductsByFilterFx>()
+export const loadWatchedProducts = goods.createEvent<ILoadWatchedProductsFx>()
 
 export const loadOneProductFx = createEffect(
   async ({
@@ -29,28 +28,28 @@ export const loadOneProductFx = createEffect(
     withShowingSizeTable,
   }: ILoadOneProductFx) => {
     try {
-      setSpinner && setSpinner(true);
-      const { data } = await api.post("/api/goods/one", {
+      setSpinner && setSpinner(true)
+      const { data } = await api.post('/api/goods/one', {
         productId,
         category,
-      });
+      })
 
       if (withShowingSizeTable) {
-        handleShowSizeTable(data.productItem);
+        handleShowSizeTable(data.productItem)
       }
 
-      if (data?.message === "Wrong product id") {
-        return { productItem: { errorMessage: "Wrong product id" } };
+      if (data?.message === 'Wrong product id') {
+        return { productItem: { errorMessage: 'Wrong product id' } }
       }
 
-      return data;
+      return data
     } catch (error) {
-      toast.error((error as Error).message);
+      toast.error((error as Error).message)
     } finally {
-      setSpinner && setSpinner(false);
+      setSpinner && setSpinner(false)
     }
   }
-);
+)
 
 export const loadProductsByFilterFx = createEffect(
   async ({
@@ -63,37 +62,37 @@ export const loadProductsByFilterFx = createEffect(
     try {
       const { data } = await api.get(
         `/api/goods/filter?limit=${limit}&offset=${offset}&category=${category}&${additionalParam}${
-          isCatalog ? "&catalog=true" : ""
+          isCatalog ? '&catalog=true' : ''
         }`
-      );
+      )
 
-      return data;
+      return data
     } catch (error) {
-      toast.error((error as Error).message);
+      toast.error((error as Error).message)
     }
   }
-);
+)
 
 export const loadWatchedProductsFx = createEffect(
   async ({ payload }: ILoadWatchedProductsFx) => {
     try {
-      const { data } = await api.post("/api/goods/watched", { payload });
+      const { data } = await api.post('/api/goods/watched', { payload })
 
-      return data;
+      return data
     } catch (error) {
-      toast.error((error as Error).message);
+      toast.error((error as Error).message)
     }
   }
-);
+)
 
 export const getNewProductsFx = createEffect(async () => {
-  const { data } = await api.get("/api/goods/new");
+  const { data } = await api.get('/api/goods/new')
 
-  return data;
-});
+  return data
+})
 
 export const getBestsellerProductsFx = createEffect(async () => {
-  const { data } = await api.get("/api/goods/bestsellers");
+  const { data } = await api.get('/api/goods/bestsellers')
 
-  return data;
-});
+  return data
+})

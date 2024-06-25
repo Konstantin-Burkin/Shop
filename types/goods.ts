@@ -1,58 +1,57 @@
 // types/goods.ts
-import { IProduct } from "./common";
+import { IProduct } from './common'
 
 export interface ILoadOneProductFx {
-  productId: string;
-  category: string;
-  setSpinner?: (arg0: boolean) => void;
-  withShowingSizeTable?: boolean;
+  productId: string
+  category: string
+  setSpinner?: (arg0: boolean) => void
+  withShowingSizeTable?: boolean
 }
 
 export interface IProductSizesItemProps {
-  currentSize: [string, boolean];
-  selectedSize: string;
-  setSelectedSize: (arg0: string) => void;
-
+  currentSize: [string, boolean]
+  selectedSize: string
+  setSelectedSize: (arg0: string) => void
 }
 
 export interface IProductCounterProps {
-  className: string;
-  count: number;
-  setCount: (arg0: number) => void;
+  className: string
+  count: number
+  setCount: (arg0: number) => void
 
-  updateCountAsync: boolean;
-  initialCount?: number;
-  totalCount?: number;
-  increasePrice?: VoidFunction;
-  decreasePrice?: VoidFunction;
+  updateCountAsync: boolean
+  initialCount?: number
+  totalCount?: number
+  increasePrice?: VoidFunction
+  decreasePrice?: VoidFunction
 }
 
 export interface IAddToCartBtnProps {
-  handleAddToCart: VoidFunction;
-  addToCartSpinner: boolean;
-  text: string;
-  btnDisabled?: boolean;
-  className?: string;
+  handleAddToCart: VoidFunction
+  addToCartSpinner: boolean
+  text: string
+  btnDisabled?: boolean
+  className?: string
 }
 
 export interface IProductCountBySizeProps {
-  size: string;
-  withCartIcon?: boolean;
+  size: string
+  withCartIcon?: boolean
 }
 
 export interface ILoadProductsByFilterFx {
-  limit: number;
-  offset: number;
-  category: string;
-  additionalParam?: string;
-  isCatalog?: boolean;
+  limit: number
+  offset: number
+  category: string
+  additionalParam?: string
+  isCatalog?: boolean
 }
 
 export interface IProducts {
-  count: number;
-  items: IProduct[];
+  count: number
+  items: IProduct[]
 }
 
 export interface ILoadWatchedProductsFx {
-  payload: { _id: string; category: string }[];
+  payload: { _id: string; category: string }[]
 }

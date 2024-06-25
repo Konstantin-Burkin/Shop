@@ -1,13 +1,13 @@
-import { getNewProductsFx } from "@/api/main.page";
-import { $newProducts } from "@/context/goods/state";
-import { useLang } from "@/hooks/useLang";
-import { useUnit } from "effector-react";
-import MainPageSection from "./MainPageSection";
+import { getNewProductsFx } from '@/api/main.page'
+import { $newProducts } from '@/context/goods/state'
+import { useLang } from '@/hooks/useLang'
+import { useUnit } from 'effector-react'
+import MainPageSection from './MainPageSection'
 
 const NewGoods = () => {
-  const goods = useUnit($newProducts);
-  const spinner = useUnit(getNewProductsFx.pending);
-  const { lang, translations } = useLang();
+  const goods = useUnit($newProducts)
+  const spinner = useUnit(getNewProductsFx.pending)
+  const { lang, translations } = useLang()
 
   return (
     <MainPageSection
@@ -15,7 +15,7 @@ const NewGoods = () => {
       goods={goods}
       spinner={spinner}
     />
-  );
-};
+  )
+}
 
-export default NewGoods;
+export default NewGoods

@@ -69,7 +69,7 @@
 }
 
 .footer__socials__item__link::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;

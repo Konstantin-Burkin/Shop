@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config()
 
 const config = {
   mongodb: {
@@ -12,11 +12,11 @@ const config = {
       // socketTimeoutMS: 3600000, // можно использовать при необходимости
     },
   },
-  migrationsDir: "migrations",
-  changelogCollectionName: "changelog",
-  migrationFileExtension: ".js",
+  migrationsDir: 'migrations',
+  changelogCollectionName: 'changelog',
+  migrationFileExtension: '.js',
   useFileHash: false,
-  moduleSystem: "commonjs",
-};
+  moduleSystem: 'commonjs',
+}
 
-module.exports = config;
+module.exports = config

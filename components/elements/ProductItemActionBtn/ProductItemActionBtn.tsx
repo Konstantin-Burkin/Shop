@@ -1,31 +1,31 @@
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from 'react'
 // import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AnimatePresence, motion } from "framer-motion";
-import Tooltip from "../Tooltip/Tooltip";
-import { IProductItemActionBtnProps } from "@/types/elements";
-import styles from "@/styles/product-item-action-btn/index.module.scss";
-import tooltipStyles from "@/styles/tooltip/index.module.scss";
+import styles from '@/styles/product-item-action-btn/index.module.scss'
+import tooltipStyles from '@/styles/tooltip/index.module.scss'
+import { IProductItemActionBtnProps } from '@/types/elements'
+import { AnimatePresence, motion } from 'framer-motion'
+import Tooltip from '../Tooltip/Tooltip'
 
 const ProductItemActionBtn = ({
   text,
   callback,
   iconClass,
   marginBottom,
-  spinner,
+  // spinner,
   withTooltip = true,
 }: IProductItemActionBtnProps) => {
-  const [open, setOpen] = useState(false);
-  const [tooltipLeft, setTooltipLeft] = useState(0);
-  const showTooltip = () => setOpen(true);
-  const hideTooltip = () => setOpen(false);
-  const tooltipRef = useRef() as MutableRefObject<HTMLDivElement>;
+  const [open, setOpen] = useState(false)
+  const [tooltipLeft, setTooltipLeft] = useState(0)
+  const showTooltip = () => setOpen(true)
+  const hideTooltip = () => setOpen(false)
+  const tooltipRef = useRef() as MutableRefObject<HTMLDivElement>
 
   useEffect(() => {
     if (open && withTooltip) {
-      setTooltipLeft(tooltipRef.current.clientWidth);
+      setTooltipLeft(tooltipRef.current.clientWidth)
     }
-  }, [open, withTooltip]);
+  }, [open, withTooltip])
 
   return (
     <div className={styles.actions}>
@@ -55,7 +55,7 @@ const ProductItemActionBtn = ({
         </AnimatePresence>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ProductItemActionBtn;
+export default ProductItemActionBtn

@@ -1,34 +1,34 @@
 /* eslint-disable indent */
 
-import ProductAvailable from "@/components/elements/ProductAvailable/ProductAvailable";
-import ProductItemActionBtn from "@/components/elements/ProductItemActionBtn/ProductItemActionBtn";
-import ProductSubtitle from "@/components/elements/ProductSubtitle/ProductSubtitle";
-import { useLang } from "@/hooks/useLang";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { addOverflowHiddenToBody, formatPrice } from "@/lib/utils/common";
-import { IProductsListItemProps } from "@/types/modules";
-import Image from "next/image";
-import Link from "next/link";
-import ProductLabel from "./ProductLabel";
+import ProductAvailable from '@/components/elements/ProductAvailable/ProductAvailable'
+import ProductItemActionBtn from '@/components/elements/ProductItemActionBtn/ProductItemActionBtn'
+import ProductSubtitle from '@/components/elements/ProductSubtitle/ProductSubtitle'
+import { useLang } from '@/hooks/useLang'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { addOverflowHiddenToBody, formatPrice } from '@/lib/utils/common'
+import { IProductsListItemProps } from '@/types/modules'
+import Image from 'next/image'
+import Link from 'next/link'
+import ProductLabel from './ProductLabel'
 
-import stylesForAd from "@/styles/ad/index.module.scss";
-import styles from "@/styles/product-list-item/index.module.scss";
+import stylesForAd from '@/styles/ad/index.module.scss'
+import styles from '@/styles/product-list-item/index.module.scss'
 
 const ProductsListItem = ({ item, title }: IProductsListItemProps) => {
-  const { lang, translations } = useLang();
-  const isMedia800 = useMediaQuery(800);
-  const isTitleForNew = title === translations[lang].main_page.new_title;
-  const isProductInCart = false; // предполагается, что этот флаг будет установлен в зависимости от состояния корзины
+  const { lang, translations } = useLang()
+  const isMedia800 = useMediaQuery(800)
+  const isTitleForNew = title === translations[lang].main_page.new_title
+  const isProductInCart = false // предполагается, что этот флаг будет установлен в зависимости от состояния корзины
 
   const addToCart = () => {
     // логика добавления в корзину
-    addOverflowHiddenToBody(); // пример вызова функции из utils
-  };
+    addOverflowHiddenToBody() // пример вызова функции из utils
+  }
 
   return (
     <>
-      {item.characteristics.collection === "line" &&
-      item.type === "t-shirts" ? (
+      {item.characteristics.collection === 'line' &&
+      item.type === 't-shirts' ? (
         <li className={styles.list__item_ad}>
           <Link
             href={`/catalog/${item.category}/${item._id}`}
@@ -51,12 +51,12 @@ const ProductsListItem = ({ item, title }: IProductsListItemProps) => {
             </div>
             <p className={styles.list__item_ad__title}>
               <span>
-                {translations[lang].main_page.tShirt} «Line»{" "}
+                {translations[lang].main_page.tShirt} «Line»{' '}
                 {
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   //@ts-ignore
                   translations[lang].main_page[
-                    item.images[0].split("/img/").join("").split("-")[0]
+                    item.images[0].split('/img/').join('').split('-')[0]
                   ]
                 }
               </span>
@@ -79,23 +79,23 @@ const ProductsListItem = ({ item, title }: IProductsListItemProps) => {
                 : translations[lang].main_page.is_bestseller}
             </span>
           ) : !item.isNew && !item.isBestseller ? (
-            ""
+            ''
           ) : (
             <ProductLabel isBestseller={item.isBestseller} isNew={item.isNew} />
           )}
           <div className={styles.list__item__actions}>
             <ProductItemActionBtn
               text={translations[lang].product.add_to_comparison}
-              iconClass={""}
+              iconClass={''}
             />
             <ProductItemActionBtn
               text={translations[lang].product.add_to_comparison}
-              iconClass={""}
+              iconClass={''}
             />
             {!isMedia800 && (
               <ProductItemActionBtn
                 text={translations[lang].product.quick_view}
-                iconClass={""}
+                iconClass={''}
               />
             )}
           </div>
@@ -122,7 +122,7 @@ const ProductsListItem = ({ item, title }: IProductsListItemProps) => {
           <button
             onClick={addToCart}
             className={`btn-reset ${styles.list__item__cart} ${
-              isProductInCart ? styles.list__item__cart_added : ""
+              isProductInCart ? styles.list__item__cart_added : ''
             }`}
           >
             {isProductInCart
@@ -132,7 +132,7 @@ const ProductsListItem = ({ item, title }: IProductsListItemProps) => {
         </li>
       )}
     </>
-  );
-};
+  )
+}
 
-export default ProductsListItem;
+export default ProductsListItem

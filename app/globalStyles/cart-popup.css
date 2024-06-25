@@ -84,7 +84,7 @@
   align-items: self-end;
   padding-left: 20px;
   justify-content: center;
-  background-image: url("/img/empty-cart.svg");
+  background-image: url('/img/empty-cart.svg');
   background-repeat: no-repeat;
   background-position: center center;
   color: #e8e9ea;
@@ -108,7 +108,7 @@
 
 .cart-list__item__delete span::before {
   background-color: #a5a8ad;
-  content: "";
+  content: '';
   height: 100%;
   width: 100%;
   left: 0;
@@ -197,7 +197,7 @@
 }
 
 .cart-list__item__counter button::before {
-  content: "";
+  content: '';
   position: absolute;
   height: 100%;
   width: 100%;

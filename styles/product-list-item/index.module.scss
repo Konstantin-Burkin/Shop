@@ -239,7 +239,7 @@
     &__subtitle__rect {
       position: absolute;
       right: 0;
-      background-image: url("/img/subtitle-rect.svg");
+      background-image: url('/img/subtitle-rect.svg');
       background-repeat: no-repeat;
       background-position: center center;
       bottom: -15px;
@@ -333,12 +333,12 @@
 
     &__green {
       color: #26da72;
-      background-image: url("/img/green-ellipse.svg");
+      background-image: url('/img/green-ellipse.svg');
     }
 
     &__red {
       color: #ff4747;
-      background-image: url("/img/red-ellipse.svg");
+      background-image: url('/img/red-ellipse.svg');
     }
   }
 

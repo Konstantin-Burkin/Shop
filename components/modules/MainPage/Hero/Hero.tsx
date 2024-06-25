@@ -1,21 +1,21 @@
-"use client";
-import ProductSubtitle from "@/components/elements/ProductSubtitle/ProductSubtitle";
-import { useLang } from "@/hooks/useLang";
-import img1 from "@/public/img/black-t.png";
-import img2 from "@/public/img/orange-t.png";
-import img3 from "@/public/img/violet-t.png";
-import stylesForAd from "@/styles/ad/index.module.scss";
-import styles from "@/styles/main-page/index.module.scss";
-import productSubtitleStyles from "@/styles/productSubtitle/index.module.scss";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import { EffectCoverflow } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperType } from "swiper/types";
-import HeroSlide from "./HeroSlide";
+'use client'
+import ProductSubtitle from '@/components/elements/ProductSubtitle/ProductSubtitle'
+import { useLang } from '@/hooks/useLang'
+import img1 from '@/public/img/black-t.png'
+import img2 from '@/public/img/orange-t.png'
+import img3 from '@/public/img/violet-t.png'
+import stylesForAd from '@/styles/ad/index.module.scss'
+import styles from '@/styles/main-page/index.module.scss'
+import productSubtitleStyles from '@/styles/productSubtitle/index.module.scss'
+import 'swiper/css'
+import 'swiper/css/effect-coverflow'
+import { EffectCoverflow } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperType } from 'swiper/types'
+import HeroSlide from './HeroSlide'
 
 const Hero = () => {
-  const { lang, translations } = useLang();
+  const { lang, translations } = useLang()
 
   const slides = [
     {
@@ -33,27 +33,27 @@ const Hero = () => {
       title: `${translations[lang].main_page.tShirt} «Line» ${translations[lang].main_page.violet}`,
       image: img3,
     },
-  ];
+  ]
 
-  const handleSlideClick = (e: SwiperType) => e.slideTo(e.clickedIndex);
+  const handleSlideClick = (e: SwiperType) => e.slideTo(e.clickedIndex)
 
   return (
     <section className={styles.hero}>
-      <h1 className="visually-hidden">
+      <h1 className='visually-hidden'>
         {translations[lang].main_page.hero_hidden_title}
       </h1>
       <div className={`container ${styles.hero__container}`}>
         <span className={stylesForAd.ad}>{translations[lang].common.ad}</span>
         <Swiper
           className={styles.hero__slider}
-          effect="coverflow"
+          effect='coverflow'
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
             depth: 100,
             modifier: 2.5,
           }}
-          slidesPerView="auto"
+          slidesPerView='auto'
           initialSlide={2}
           autoplay
           loop
@@ -77,7 +77,7 @@ const Hero = () => {
         <h2 className={styles.hero__title}>
           <span
             className={`${styles.hero__title__subtitle} ${
-              lang === "ru" ? "" : styles.hero__title__subtitle_lang
+              lang === 'ru' ? '' : styles.hero__title__subtitle_lang
             }`}
           >
             [ {translations[lang].main_page.hero_subtitle} ]
@@ -88,7 +88,7 @@ const Hero = () => {
         </h2>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

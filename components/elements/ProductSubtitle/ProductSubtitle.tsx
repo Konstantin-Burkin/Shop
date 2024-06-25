@@ -1,12 +1,12 @@
-import { useLang } from "@/hooks/useLang";
-import { IProductSubtitleProps } from "@/types/elements";
+import { useLang } from '@/hooks/useLang'
+import { IProductSubtitleProps } from '@/types/elements'
 
 const ProductSubtitle = ({
   subtitleClassName,
   subtitleRectClassName,
 }: IProductSubtitleProps) => {
-  const { lang, translations } = useLang();
-  const descriptionSlicePosition = lang === "ru" ? 5 : 2;
+  const { lang, translations } = useLang()
+  const descriptionSlicePosition = lang === 'ru' ? 5 : 2
 
   return (
     <div className={subtitleClassName}>
@@ -24,7 +24,7 @@ const ProductSubtitle = ({
         )}
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default ProductSubtitle;
+export default ProductSubtitle
