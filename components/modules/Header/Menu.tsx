@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import React from 'react'
 import Logo from '@/components/elements/Logo/logo'
 import { AllowedLangs } from '@/constants/lang'
 import { setLang } from '@/context/lang'
