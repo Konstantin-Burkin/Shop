@@ -33,7 +33,7 @@ const Header = () => {
               className='btn-reset header__links__item__btn header__links__item__btn--search'
               onClick={handleOpenSearchModal}
             >
-              Search
+              {' '}
             </button>
           </li>
 

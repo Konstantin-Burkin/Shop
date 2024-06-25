@@ -18,7 +18,7 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
           href='/cart'
           onMouseEnter={handleShowPopup}
         >
-          Cart Link Content {/* Добавьте содержимое Link */}
+          {' '}
         </Link>
         <AnimatePresence>
           {open && (
@@ -34,7 +34,7 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
                 className='btn-reset cart-popup__close'
                 onClick={handleHidePopup}
               >
-                Close Button Content {/* Добавьте содержимое button */}
+                {' '}
               </button>
               <h3 className='cart-popup__title'>
                 {translations[lang].breadcrumbs.cart}
