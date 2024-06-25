@@ -1,9 +1,8 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 const Logo = () => (
   <Link className='logo' href='/'>
-    <Image className='logo__img' src='/img/logo.svg' alt='Rostelecom Logo' />
+    <img className='logo__img' src='/img/logo.svg' alt='Rostelecom Logo' />
   </Link>
 )
 
